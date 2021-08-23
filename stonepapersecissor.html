@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stone Paper Secissor</title>
+    <style>
+        #backside {
+            width: 450px;
+            height: 700px;
+            background-color: indianred;
+            transform: translate(-50%, -50%);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+        }
+
+        @keyframes col {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+
+            100% {
+                filter: hue-rotate(360deg);
+
+            }
+        }
+
+        #mainBox {
+            border: 3px dotted;
+            padding: 15px;
+            margin-top: 20px;
+            width: 400px;
+            height: 500px;
+            transform: translate(-50%, -50%);
+            position: relative;
+            left: 50%;
+            top: 50%;
+            /* animation: col 15s linear infinite; */
+        }
+
+        td {
+            width: 30%;
+        }
+
+        tr {
+            height: 33.33%;
+        }
+
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background-color: wheat;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        button {
+            font-size: 20px;
+            font-weight: 800;
+            transition: 0.2s;
+            width: 90%;
+            height: 90%;
+            text-align: center;
+            position: relative;
+            transform: translate(-50%, -50%);
+            top: 45%;
+            left: 50%;
+            background-color: rgb(28, 170, 170);
+            outline: none;
+        } 
+
+        button:hover {
+            font-size: 20px;
+            font-weight: 800;
+            transition: 0.2s;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            position: relative;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            background-color: teal;
+            outline: none;
+        }
+
+        img {
+            width: 100%;
+            width: 100%;
+            background-color: teal;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        p {
+            font-size: 23px;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .background {
+            background-color: wheat;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="backside">
+        <table border=0 id="mainBox">
+            <caption>
+                <h1>Stone Paper Scissor</h1>
+            </caption>
+            <tr>
+                <td class="background">
+                    <h2>Your<br>Choice</h2>
+                </td>
+                <td>
+                    <img id="resu">
+                </td>
+                <td class="background">
+                    <h2>Computer Choice</h2>
+                </td>
+            </tr>
+            <tr>
+                <td><img id="userCh"></img></td>
+                <td class="background">
+                    <p id="final">
+                <td><img id="ComCh"></img></td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="Stones" onclick='dis(),one() , show(),rel()'><img src="stone.PNG" alt="Stone"></button>
+                </td>
+                <td>
+                    <button id="Papers" onclick='dis(),two(), show(),rel()'><img src="paper.PNG" alt="Paper"></button>
+                </td>
+                <td>
+                    <button id="Secissors" onclick='dis(),three(), show(),rel()'><img src="secissor.PNG"
+                            alt="Paper"></button>
+                </td>
+            </tr>
+    </div>
+    <script>
+        function dis() {
+            document.getElementById("Stones").disabled = true;
+            document.getElementById("Papers").disabled = true;
+            document.getElementById("Secissors").disabled = true;
+        }
+        function rel() {
+            setTimeout(br, 3000);
+        }
+        function br() {
+            var url = "stonepapersecissor.html";
+            window.location = url;
+        }
+
+        let num = Math.random();
+        num = Math.floor((num * (3 - 1 + 1) + 1));
+        console.log(num);
+        if (num == 1) {
+            console.log("stone");
+        }
+        else if (num == 2) {
+            console.log("paper");
+        }
+        else {
+            console.log("secissor");
+        }
+        function sleep(millis) {
+            var date = new Date();
+            var curDate = null;
+            do { curDate = new Date(); }
+            while (curDate - date < millis);
+        }
+        // document.write(num);
+
+        function one() {
+            document.getElementById("userCh").src = "stone.PNG"
+            if (num == 1) {
+                document.getElementById("resu").src = "draw.PNG"
+                document.getElementById("final").innerHTML = "DRAW!!!!"
+
+            }
+            else if (num == 2) {
+                document.getElementById("resu").src = "paper.PNG"
+                document.getElementById("final").innerHTML = "Computer Won"
+            }
+            else if (num == 3) {
+                document.getElementById("resu").src = "stone.PNG"
+                document.getElementById("final").innerHTML = "You won"
+
+            }
+
+        }
+        function two() {
+            document.getElementById("userCh").src = "paper.PNG"
+            if (num == 1) {
+                document.getElementById("resu").src = "paper.PNG"
+                document.getElementById("final").innerHTML = "You won"
+            }
+            else if (num == 2) {
+                document.getElementById("resu").src = "draw.PNG"
+                document.getElementById("final").innerHTML = "DRAW!!!!"
+
+            }
+            else if (num == 3) {
+                document.getElementById("resu").src = "secissor.PNG"
+                document.getElementById("final").innerHTML = "Computer Won"
+            }
+        }
+        function three() {
+            document.getElementById("userCh").src = "Secissor.PNG"
+            if (num == 1) {
+                document.getElementById("resu").src = "stone.PNG"
+                document.getElementById("final").innerHTML = "Computer Won"
+            }
+            else if (num == 2) {
+                document.getElementById("resu").src = "secissor.PNG"
+                document.getElementById("final").innerHTML = "You won"
+            }
+            else if (num == 3) {
+                document.getElementById("resu").src = "draw.PNG"
+                document.getElementById("final").innerHTML = "DRAW!!!!"
+            }
+        }
+        function show() {
+            var user;
+            if (num == 1) {
+                document.getElementById("ComCh").src = "stone.PNG"
+            }
+            else if (num == 2) {
+                document.getElementById("ComCh").src = "paper.PNG"
+            }
+            else {
+                document.getElementById("ComCh").src = "secissor.PNG"
+            }
+        }
+    </script>
+</body>
+<!-- 
+Credits: 
+Code : Anmol main
+Images used source : Google images
+-->
+</html>
